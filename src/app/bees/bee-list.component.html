@@ -1,0 +1,6 @@
+<div class='bee-list'>
+  <div *ngFor='let bee of bees' (click)='selectBee(bee)'>
+    <div class='bee-header'><h3><a>{{ bee.name }}</a></h3></div>
+  </div>
+</div>
+<app-bee-detail *ngIf='currentlySelectedBee' [bee]='currentlySelectedBee'></app-bee-detail>

@@ -1,0 +1,26 @@
+<fieldset>
+  <legend>Create New Bee</legend>
+  <form #clueForm="ngForm">
+    <div>
+      <input name="name" input='text' placeholder="Name" [(ngModel)]="bee.name">
+    </div>
+    <div>
+      <input name="genus" input='text' placeholder="Genus" [(ngModel)]="bee.genus">
+    </div>
+    <div>
+      <label for="description">Bee description</label>
+      <textarea id="description" name="description" input='text' [(ngModel)]="bee.description">Tell me something about this bee...</textarea>
+    </div>
+    <div>
+      <input name='image_url' input='text' placeholder="Image URL" [(ngModel)]="bee.image_url">
+    </div>
+    <div class="deadly-select">
+      <label for="deadly-select">Is this Bee Deadly?</label>
+      <select id="deadly-select" name='deadly' [(ngModel)]="bee.deadly">
+        <option value='true'>true</option>
+        <option value='false'>false</option>
+      </select>
+    </div>
+    <button class='sky-btn sky-btn-primary' [disabled]="!clueForm.form.valid" (click)="submitBee(bee)">Submit</button>
+  </form>
+</fieldset>
