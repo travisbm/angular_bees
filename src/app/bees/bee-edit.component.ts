@@ -19,7 +19,7 @@ export class BeeEditComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.bee = this.service.selectedBee();
+    this.bee = new Bee();
   }
 
   public submitBee(): void {

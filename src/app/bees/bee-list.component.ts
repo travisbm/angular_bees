@@ -13,7 +13,7 @@ import { BeesService } from '../shared/services/bees.service';
 
 export class BeeListComponent implements OnInit {
   public bees: Bee[] = [];
-  // public currentlySelectedBee: Bee;
+  public currentlySelectedBee: Bee;
 
   constructor(
     private service: BeesService
@@ -23,10 +23,12 @@ export class BeeListComponent implements OnInit {
     this.service
     .fetch()
     .subscribe(bees => this.bees = bees);
+    this.service
+      .currentlySelectedBee
+      .subscribe(bee => this.currentlySelectedBee = bee);
   }
 
   public selectBee(bee: Bee): void {
-    // this.currentlySelectedBee = bee;
-    this.service.selectedBee(bee);
+    this.service.setSelectedBee(bee);
   }
 }
