@@ -11,7 +11,7 @@ export class BeeDetailComponent {
   @Input() public bee: Bee;
 
   constructor(
-    public service: BeesService
+    private service: BeesService
   ) {}
 
   public deleteBee(bee: Bee): void {

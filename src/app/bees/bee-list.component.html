@@ -1,8 +1,10 @@
 <div class='container'>
   <div class='bee-list'>
     <div *ngFor='let bee of bees'>
-      <a [skyAppLink]="['/bees', bee.id]" class="bee-name">{{ bee.name }}</a>
-      <!-- <button type="button" class="sky-btn sky-btn-default bee-name">{{ bee.name }}</button> -->
+      <h2><a [skyAppLink]="['/bees', bee.id]">{{ bee.name }}</a></h2>
+      <!-- <button type="button" class="sky-btn sky-btn-default bee-name">
+        <a [skyAppLink]="['/bees', bee.id]">{{ bee.name }}</a>
+      </button> -->
     </div>
   </div>
   <div class='detail-container'>

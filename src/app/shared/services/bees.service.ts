@@ -9,9 +9,9 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 export class BeesService {
   // public currentlySelectedBee: BehaviorSubject<Bee>;
 
-  constructor(private service: SkyAuthHttp) {
-    // this.currentlySelectedBee = new BehaviorSubject<Bee>(undefined);
-  }
+  constructor(
+    private service: SkyAuthHttp
+  ) {}
 
   // public setSelectedBee(bee: Bee): void {
   //   this.currentlySelectedBee.next(bee);
