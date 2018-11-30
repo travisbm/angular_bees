@@ -1,7 +1,6 @@
-import {
-  Component, Input
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Bee } from '../models/bee';
+import { BeesService } from '../shared/services/bees.service';
 
 @Component({
   selector: 'app-bee-detail',
@@ -9,9 +8,15 @@ import { Bee } from '../models/bee';
   styleUrls: ['./bee-detail.component.scss']
 })
 export class BeeDetailComponent {
-  @Input()
+  @Input() public bee: Bee;
 
-  public bee: Bee;
+  constructor(
+    public service: BeesService
+  ) {}
 
-  constructor() {}
+  public deleteBee(bee: Bee): void {
+    this.service
+      .delete(bee)
+      .subscribe ();
+  }
 }

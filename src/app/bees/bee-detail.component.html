@@ -1,14 +1,29 @@
-<div class="bee-detail">
+<div class="detail-container">
 
-  <div class="bee-image"><img [src]='bee.image_url'></div>
+  <div class="image"><img [src]='bee.image_url'></div>
 
-  <div class="bee-information">
-    <div class="bee-info name"><h2>{{ bee.name }}</h2></div>
-    <div class="bee-info genus"><h3>Genus: {{ bee.genus }}</h3></div>
-    <div class="bee-info description"><p>{{ bee.description }}</p></div>
-    <div *ngIf="bee.deadly" class="bee-info deadly">This bee is Deadly!</div>
+  <div class="name">
+    <h2>{{ bee.name }}</h2>
+  </div>
+
+  <div class="genus">
+    <h4>Genus: {{ bee.genus }}</h4>
+  </div>
+
+  <div *ngIf="bee.deadly" class="deadly">This bee is Deadly!</div>
+
+  <div class="description">
+    <p>{{ bee.description }}</p>
+  </div>
+
+  <div class="edit">
+    <button class="sky-btn sky-btn-default">Edit</button>
+  </div>
+
+  <div class="delete">
+    <button class="sky-btn sky-btn-primary" (click)="deleteBee(bee)">Delete</button>
   </div>
 
 </div>
 
-<app-bee-edit></app-bee-edit>
+<!-- <app-bee-edit></app-bee-edit> -->

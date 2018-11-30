@@ -7,20 +7,26 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class BeesService {
-  public currentlySelectedBee: BehaviorSubject<Bee>;
+  // public currentlySelectedBee: BehaviorSubject<Bee>;
 
   constructor(private service: SkyAuthHttp) {
-    this.currentlySelectedBee = new BehaviorSubject<Bee>(undefined);
+    // this.currentlySelectedBee = new BehaviorSubject<Bee>(undefined);
   }
 
-  public setSelectedBee(bee: Bee): void {
-    this.currentlySelectedBee.next(bee);
-  }
+  // public setSelectedBee(bee: Bee): void {
+  //   this.currentlySelectedBee.next(bee);
+  // }
 
-  public fetch(): Observable<Bee[]> {
+  public getBees(): Observable<Bee[]> {
     return this.service
       .get('https://buzzbaud.curtissimo.com/v1/bees')
       .map(response => response.json().bees);
+  }
+
+  public getBee(id: string): Observable<Bee> {
+    return this.service
+      .get(`https://buzzbaud.curtissimo.com/v1/bees/${id}`)
+      .map(response => response.json());
   }
 
   // public updateBee(bee: Bee) {
@@ -34,7 +40,8 @@ export class BeesService {
       .map(response => response.json());
   }
 
-  // public selectedBee(bee: Bee): void {
-  //   this.currentlySelectedBee = bee;
-  // }
+  public delete(bee: Bee): Observable<Bee> {
+    return this.service
+      .delete(`https://buzzbaud.curtissimo.com/v1/bees/${bee.id}`, bee);
+  }
 }

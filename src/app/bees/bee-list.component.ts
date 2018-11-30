@@ -1,5 +1,5 @@
 import {
-  Component, OnInit
+  Component, OnInit, Input, OnChanges, SimpleChanges
 } from '@angular/core';
 
 import { Bee } from '../models/bee';
@@ -11,9 +11,11 @@ import { BeesService } from '../shared/services/bees.service';
   styleUrls: ['./bee-list.component.scss']
 })
 
-export class BeeListComponent implements OnInit {
+export class BeeListComponent implements OnInit, OnChanges {
+  @Input() public selectedBeeId: string;
+
   public bees: Bee[] = [];
-  public currentlySelectedBee: Bee;
+  public selectedBee: Bee;
 
   constructor(
     private service: BeesService
@@ -21,14 +23,21 @@ export class BeeListComponent implements OnInit {
 
   public ngOnInit(): void {
     this.service
-    .fetch()
-    .subscribe(bees => this.bees = bees);
-    this.service
-      .currentlySelectedBee
-      .subscribe(bee => this.currentlySelectedBee = bee);
+      .getBees()
+      .subscribe(bees => this.bees = bees);
+    // this.service
+    //   .currentlySelectedBee
+    //   .subscribe(bee => this.currentlySelectedBee = bee);
   }
 
-  public selectBee(bee: Bee): void {
-    this.service.setSelectedBee(bee);
+  public ngOnChanges(changes: SimpleChanges) {
+    console.log(this.selectedBeeId);
+    this.service
+      .getBee(this.selectedBeeId)
+      .subscribe(bee => this.selectedBee = bee);
   }
+
+  // public selectBee(bee: Bee): void {
+  //   this.service.setSelectedBee(bee);
+  // }
 }

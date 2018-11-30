@@ -1,8 +1,18 @@
-.bee-list {
-  display: flex;
-  justify-content: space-evenly;
+.container {
+  display: grid;
+  grid-template-columns: 20% 1fr;
 }
 
-.bee-header {
-  flex-direction: row;
+.bee-list {
+  display: flex;
+  height: 800px;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+}
+
+.bee-name {
+  height: 50px;
+  width: 150px;
+  margin: 10px 0px 10px 0px;
 }
